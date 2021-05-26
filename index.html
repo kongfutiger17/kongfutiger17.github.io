@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Kongfutiger </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.76.5" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Tiger">
+    
+    <link rel="stylesheet"
+          href="https://kongfutiger17.github.io/css/style.min.2b188541d728e8afd69a6f1b8b83f89f2b138d671fb728eff20ff3f3dcf5b55e.css"
+          integrity="sha256-KxiFQdco6K/Wmm8bi4P4nysTjWcftyjv8g/z89z1tV4="
+          crossorigin="anonymous"
+          type="text/css"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://kongfutiger17.github.io/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kongfutiger17.github.io/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kongfutiger17.github.io/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kongfutiger17.github.io/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://kongfutiger17.github.io/">
+
+    
+    <link rel="alternate" type="application/rss+xml" href="https://kongfutiger17.github.io/index.xml" title="" />
+    
+    
+    
+    <script type="text/javascript"
+            src="https://kongfutiger17.github.io/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kongfutiger17.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Tiger"/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://kongfutiger17.github.io/images/profile.jpg" alt="profile picture">
+            <h3 title=""><a href="/">I&#39;m Kongfutiger</a></h3>
+            <div class="description">
+                <p>Tiger</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://de.linkedin.com/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/lxndrblz/anatole/" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://www.instagram.com/" rel="me" aria-label="instagram">
+                    <i class="fab fa-instagram fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:mail@alexbilz.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Kongfutiger 2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a class="current"
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    
+    
+        <div class="post animated fadeInDown">
+            <div class="post-title">
+                <h3><a href="/post/blog7/">java容器</a>
+                </h3>
+            </div>
+            <div class="post-content">
+                <div class="p_part"><p>本文主要初步介绍java中常见的容器，为了学习于研究写下此文，作为学习总结。若有错误，欢迎指点。
+如果一个程序只包含固定数量的且生命期都是已知的对象，那么这是一个非常简单的程序。 通常，程序总是根据运行时才知道的某些条件去创建新的新的对象。在此之前不会知道对象的数量，甚至不知道确切的类型。数组是保存一组对象的最有效的方式，但是数组尺寸固定，而在一般情况下，你在写程序时并不知道需要多少个对象，因此数组并不是一个优秀的方案。
+java容器类分为2个不同的概念，他们的用途都是保存对象；
+Collection Collection:是一个独立的元素序列，这些元素都服从一条或者多条规则。
+·List必须按照插入的顺序保存元素
+·Set不能用重复的元素
+·Queue按照排队规则确定对象产生的顺序
+Map Map:一组成对的&quot;键值对&quot;对象，允许使用键来找查值。
+迭代器 在我们使用容器时会发现一个问题：如果我们原本对着List编码，但是后来发现如果能把相同的代码运用到Set上，将会大大方便编程，JAVA引入迭代器解决了这一问题。
+迭代器（是一种设计模式）的作用是遍历并选择序列中的对象，程序员不用知道该序列的底层结构,java使Iterable接口实现迭代器。
+Iterable接口被Collection所继承。其中的iterator方法：Iterator &lt; T&gt; iterator()返回类型为 T元素的迭代器。
+Java的Iterator只能单向移动，在Iterator接口中
+·next()方法获得序列中的下一个元素。
+·hasNext()方法检查序列中是否还有元素。
+·remove()方法将迭代器新近放回的元素删除。
+List List接口在Collection的基础上添加了大量的方法，使得可以在List的中间插入和移除元素。
+List有2种常见类型：
+ArrayList可调整大小的数组的实现List接口。 实现所有可选列表操作，并允许所有元素，包括null 。 除了实现List 接口之外，该类还提供了一些方法来操纵内部使用的存储列表的数组的大小。 （这个类是大致相当于Vector，不同之处在于它是不同步的）。
+arrayList擅长于随机访问，当从ArrayList的中间位置插入或者删除元素时，需要对数组进行复制、移动、代价比较高。因此，它适合随机查找和遍历，不适合插入和删除。
+LinkedList 双链表实现了List和Deque接口。 实现所有可选列表操作，并允许所有元素（包括null ）。 LinkedList通过较低的代价在List中间进行插入和删除操作，体用了优化的顺序访问。但是随机访问方面比较慢，它的特性集较ArrayList更大。
+ListIterator ListIterator是Iterator的子类型，他只能用于List类的访问。ListIterator能够双向访问，也可以从List中插入和删除元素。
+Set ·set不保存重复的元素（包括null），Set最常见的操作是找查。
+·Set具有与Collection一样的接口，因此没有任何额外的功能，不像前面两个不同的List。实际上Set就是Collection，只是行为不同(这是继承与多态思想的典型应用：表现不同的行为)。
+Set的主要实现由3种 HashSet实现Set接口，由哈希表（实际为HashMap实例）支持，使用散列函数储存数据具有良好的存取和查找性能。
+LinkedHashSet也是使用了散列，同样就要良好的找查性能，使用了链表来维护元素插入的顺序。
+TreeSet 将元素储存在红-黑树的数据结构中（除了TreeSet外的所有Set都具有和Collection完全一样的接口）。
+Map ·Map与Collection唯一重叠就是Map可以使用entrySet()和Values()方法来产生Collection
+Hash和HashSet集合不能保证元素的顺序一样，HashMap也不能保证key-value对的顺序。
+LinkedHashMap也使用双向链表来维护key-value对的次序，该链表负责维护Map的迭代顺序
+TreeMap是一个红黑树结构，每个键值对都作为红黑树的一个节点
+Queue ·Queue(队列)是一个典型的先进先出的容器，事物放进容器的顺序与取出的顺序是相同的。
+·LinkedList实现了Queue接口，因此LinkedList可以用作Queue的一种实现。
+·Queue接口中的方法都是独立的，在创建Queue功能实现时，不需要使用Collection方法。
+PriorityQueue优先队列声明了下一个弹出的元素是最需要的元素（具有最高优先级）</p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fa fa-sun-o"></em><span
+                                class="date">Wed, May 26, 2021</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="post animated fadeInDown">
+            <div class="post-title">
+                <h3><a href="/post/blog6/">简单方法模式</a>
+                </h3>
+            </div>
+            <div class="post-content">
+                <div class="p_part"><p>简单工厂模式 创建型模式关注对象的创建过程，是一类最常见的设计模式，在软件开发中的应用非常广泛。创建型模式描述如何将对象的创建和使分离，让用户在使用对象时无须关心对象的创建细节，从而降低系统的耦合度，让设计方案易于修改和扩展。
+简单工厂模式是最简单的设计模式之一，他虽然不属于GoF的23中设计模式，但是应用也比较频繁，同时他是学习其他创建模型的基础。
+创建型模式包括：简单工厂模式，工厂方法模式，抽象工厂模式，建造者模式，原型模式，单例模式
+简单工厂模式的结构 Factory（工厂角色）：工厂角色即工厂类，他是简单工厂模式的核心；
+Product（抽象产品类）：工厂类创建的所有对象的父类，封装了各种产品对象的公有方法。
+ConcreteProduct（具体产品角色）：简单工厂模式创建的目标，所有被创建的对象都充当这个角色的某个具体类的实例。
+简单工厂模式的优缺点 优点：1工厂类包含必要的判断逻辑，可以决定在什么时候创建那一个产品类的实例，客户端可以不同创建产品对象。
+2.客户端无须知道所创建的具体产品类的类名，只需要知道具体产品类多对应的参数即可，对于一些复杂的类名，通过简单工厂模式可以在一定程度上减少使用者的记忆量。
+缺点：
+1.由于工厂类集中了所有产品的创建逻辑，职责过重，但不能正常工作，整个系统都要受到影响。
+2.使用简单工厂模式会增加系统中类的个数，增加系统复杂度。
+3.系统拓展困难，一旦添加新产品就不得不修改工厂逻辑。
+4.简单工厂模式使用了静态工厂方法，造成工厂角色无法形成基于继承的登记结构。
+简单工厂模式试用的环境
+1.工厂负责对象比较少，由于创建的对象较少。
+2.客户端只知道传入工厂类的参数，对于创建的对象并不关心。
+简单工厂模式实例 本例子出子《java设计模式》一书
+某软件公司要基于Java语言开发一套图标库，该图表库可以为应用系统剃光多种不同外观的图标库，
+例如：柱状图，饼状图，折线图。现希望通过设置不同的参数即可得到不同类型的图表，并且可以较为方便地对图表库进行拓展。
+/** * 抽象图表接口，充当抽象类 */ public interface Chart { public void display(); } /** * 柱状图类，充当具体产品类； */ public class HistogramChart implements Chart { @Override public void display() { System.out.println(&#34;显示柱状图！&#34;); } public HistogramChart(){ System.out.println(&#34;创建柱状图！&#34;); } } /** * 饼状图类，充当具体产品类； */ public class PieChart implements Chart { @Override public void display() { System.</p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fa fa-sun-o"></em><span
+                                class="date">Wed, May 26, 2021</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="post animated fadeInDown">
+            <div class="post-title">
+                <h3><a href="/post/blog5/">面向对象的七大设原则</a>
+                </h3>
+            </div>
+            <div class="post-content">
+                <div class="p_part"><p>面向对象的七大设原则  单一职责原则 一个对象应该只包含单一的职责，并且该职责被完整的封装在一个类中。
+开闭原则 软件实体应当对扩展开放，对修改关闭
+里氏代换原则 所有引用基类的地方必须能透明地使用其子类的对象
+依赖倒转原则 高层模块不应该以来底层模块，他们都应该依赖抽象。抽象不应该依赖于细节，细节应该依赖于抽象。
+接口隔离原则 客户端不应该依赖那些他不需要的接口
+合成服用原则 优先使用对象组合，而不是通过继承来达到复用的目的
+迪米特法则 每一个软件单位对其他单位都只要最少的知识，而却局限于那些与本单位密切相关的软件单位。（一个模块发生修改时劲量少地影响其他模块）</p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fa fa-sun-o"></em><span
+                                class="date">Wed, May 26, 2021</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="post animated fadeInDown">
+            <div class="post-title">
+                <h3><a href="/post/blog3/">SQL基础</a>
+                </h3>
+            </div>
+            <div class="post-content">
+                <div class="p_part"><p>mysql基础啥的老是忘记，所以想写一篇博客，帮助自己学习，本博客参考《MySql必知必会》。
+简述 MySql是一种DBMS，即它是一种数据库软件。
+多条SQL语句必须以分号(;)分隔，MySql和多数DBMS一样，不需要再单条Sql语句后加分号。但是特定的DBMS可能必须在单条SQL语句后加上分号。
+SQL语句不区分大小写，例如SELECT与select是相同的，即使写成Select也行。但是将SQL关键字使用大写，将列名，表明使用小写，可以使代码更易阅读和调试，这是一种好习惯；
+MySql在处理SQL语句时，所有的空格都会被忽略。
+这里我创建了2张表并并插入了一些数据，用于测试；
+CREATE TABLE vendors ( vend_id INT NOT NULL PRIMARY KEY, vend_name VARCHAR(255) NOT NULL, vend_city VARCHAR(255) NOT NULL, vend_zip CHAR(255) NOT NULL, vend_country VARCHAR(255) NOT NULL ); CREATE TABLE products ( products_id INT NOT NULL PRIMARY KEY, vend_id INT NOT NULL, products_name VARCHAR(255) NOT NULL, products_price decimal(17) NOT NULL, products_desc VARCHAR(255) NOT NULL ); SElECT 查询单列信息:
+SELECT products_name FROM `products` ORDER BY 如果想已某个列作为排序则可以使用ORDER BY进行排序</p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fa fa-sun-o"></em><span
+                                class="date">Wed, May 26, 2021</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="post animated fadeInDown">
+            <div class="post-title">
+                <h3><a href="/post/blog2/">线程同步</a>
+                </h3>
+            </div>
+            <div class="post-content">
+                <div class="p_part"><p>线程同步 ·处理多线程问题时，多个线程访问同一个对象，并且某些线程还想修改这个对象。核实后我们就需要线程同步。线程同步其实就是一种等待机制，多个需要同时访问此对象的线程进入这个对象的等待池形成队列，等待前面线程使用完毕，下一个线程再使用。 ·由于同一个进程的多个线程共享一块储存空间，在带来方便的同时，也会带来访问冲突问题，为了保证数据在方法中被访问时的正确性，在访问时加入锁机制synchronized当一个线程获得对象的排它锁，独占资源，其他线程必须等待，使用后释放锁即可。
+·1一个线程持有锁会导致其他所有需要此锁的线程挂起；
+·2在多线程竞争下，加锁，释放锁会导致比较多的上下文切换 和 调度延迟，引起性能问题；
+·3如果一个优先级搞得线程等待一个优先级低的线程释放锁 会导致优先级倒置，引发性能问题
+同步方法 ·我们可以通过synchronized关键字来使线程同步，它包括两种用法：synchronized方法和synchronized块；
+public synchronized void method（int args）{}
+synchronized(OBJ){}
+·synchronized方法控制“对象”的访问，每个对象对应一把锁，每个synchronized方法都必须获得调用该方法的锁才能执行，否则线程会阻塞，方法一旦执行，就独占该锁，知道方法返回才释放锁，后面被阻塞的线程才能获得这个锁，继续执行。
+试例 public class BuyTicket { public static void main(String[] args) { Ticket ticket =new Ticket(); new Thread(ticket,&#34;t1&#34;).start(); new Thread(ticket,&#34;t2&#34;).start(); new Thread(ticket,&#34;t3&#34;).start(); new Thread(ticket,&#34;t4&#34;).start(); } } class Ticket implements Runnable{ private int ticketNumbers =10; boolean flag ; @Override public void run() { while (flag=true){ try { buy(); } catch (InterruptedException e) { e.printStackTrace(); } } } private synchronized void buy() throws InterruptedException { if (ticketNumbers&lt;=0){ flag=false; return; } Thread.</p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fa fa-sun-o"></em><span
+                                class="date">Sun, Mar 14, 2021</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="post animated fadeInDown">
+            <div class="post-title">
+                <h3><a href="/post/blog1/">线程</a>
+                </h3>
+            </div>
+            <div class="post-content">
+                <div class="p_part"><p>一、什么是线程 线程是程序中执行的线程。 Java虚拟机允许应用程序同时执行多个执行线程。 在java语言中线程A和线程B，堆内存和方法区内存共享。但是栈内存独立，一个线程一个栈。假设启动10个线程，会有10个栈空间，每个栈和每个栈之间，互不干扰，各自执行各自的，这就是多线程并发.java中之所以有多线程机制，目的就是为了提高程序的处理效率。
+二、线程的实现方式 线程有三种种实现方式
+第一种：继承thread类，重写run（）方法
+public class Thread00 extends Thread { @Override public void run(){ for (int i = 0; i &lt;200 ; i++) { System.out.println(&#34;---&#34;+i); } } public static void main(String[] args) { //main线程，主线程  //创建一个线程对象  Thread00 thread00 =new Thread00(); thread00.start(); for (int i = 0; i &lt;200 ; i++) { System.out.println(&#34;main---&#34;+i); } } } output:
+.... main---161 main---162 ---143 ---144 ---145 ... 这种方法具有OOP的单继承局限性，并不推荐使用。
+第二种：实现Runnable接口，重写run方法
+public class Thread02 implements Runnable { @Override public void run() { for (int i = 0; i &lt; 200; i++) { System.</p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fa fa-sun-o"></em><span
+                                class="date">Sun, Mar 14, 2021</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="post animated fadeInDown">
+            <div class="post-title">
+                <h3><a href="/post/blog/">操作符</a>
+                </h3>
+            </div>
+            <div class="post-content">
+                <div class="p_part"><p>​
+自动自增和递减 对于前缀递增和前缀递减（如++a或&ndash;a），会先执行运算，在生成值。而后缀递减（如a++或a&ndash;），会先生成值，在执行运算。
+下面是一个例子
+public class AutoInc { public static void main(String[] args) { int i =1; System.out.println(&#34;i:&#34;+i); System.out.println(&#34;++i:&#34;+ ++i); System.out.println(&#34;i++:&#34;+ i++); System.out.println(&#34;i:&#34;+ i); System.out.println(&#34;--i:&#34;+ --i); System.out.println(&#34;i--:&#34;+ i--); System.out.println(&#34;i:&#34;+ i); } } output:
+i:1 ++i:2 i++:2 i:3 --i:2 i--:2 i:1 我们可以看出对于前缀形式我们在执行完运算之后才得到值。但对于后缀形式则是运算执行之前就得到值。特闷是除了那些涉及赋值操作符以外，唯一具有“副作用”的操作符。他们会改变操作数，而不是仅仅使用自己的值。
+关系操作符 关系操作符==和！=也适用于所有对象。
+public class Equivalence { public static void main(String[] args) { Integer n1 = new Integer(47); Integer n2 = new Integer(47); System.out.println(n1 ==n2); System.out.println(n1 !=n2); } } output</p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fa fa-sun-o"></em><span
+                                class="date">Thu, Oct 29, 2020</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <div class="pagination">
+        
+
+
+    </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

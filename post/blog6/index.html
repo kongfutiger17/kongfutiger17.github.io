@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Kongfutiger | 简单方法模式 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.76.5" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Tiger">
+    
+    <link rel="stylesheet"
+          href="https://kongfutiger17.github.io/css/style.min.2b188541d728e8afd69a6f1b8b83f89f2b138d671fb728eff20ff3f3dcf5b55e.css"
+          integrity="sha256-KxiFQdco6K/Wmm8bi4P4nysTjWcftyjv8g/z89z1tV4="
+          crossorigin="anonymous"
+          type="text/css"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://kongfutiger17.github.io/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kongfutiger17.github.io/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kongfutiger17.github.io/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kongfutiger17.github.io/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://kongfutiger17.github.io/post/blog6/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://kongfutiger17.github.io/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kongfutiger17.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="简单方法模式"/>
+<meta name="twitter:description" content="简单工厂模式 创建型模式关注对象的创建过程，是一类最常见的设计模式，在软件开发中的应用非常广泛。创建型模式描述如何将对象的创建和使分离，让用户在使用对象时无须关心对象的创建细节，从而降低系统的耦合度，让设计方案易于修改和扩展。
+简单工厂模式是最简单的设计模式之一，他虽然不属于GoF的23中设计模式，但是应用也比较频繁，同时他是学习其他创建模型的基础。
+创建型模式包括：简单工厂模式，工厂方法模式，抽象工厂模式，建造者模式，原型模式，单例模式
+简单工厂模式的结构 Factory（工厂角色）：工厂角色即工厂类，他是简单工厂模式的核心；
+Product（抽象产品类）：工厂类创建的所有对象的父类，封装了各种产品对象的公有方法。
+ConcreteProduct（具体产品角色）：简单工厂模式创建的目标，所有被创建的对象都充当这个角色的某个具体类的实例。
+简单工厂模式的优缺点 优点：1工厂类包含必要的判断逻辑，可以决定在什么时候创建那一个产品类的实例，客户端可以不同创建产品对象。
+2.客户端无须知道所创建的具体产品类的类名，只需要知道具体产品类多对应的参数即可，对于一些复杂的类名，通过简单工厂模式可以在一定程度上减少使用者的记忆量。
+缺点：
+1.由于工厂类集中了所有产品的创建逻辑，职责过重，但不能正常工作，整个系统都要受到影响。
+2.使用简单工厂模式会增加系统中类的个数，增加系统复杂度。
+3.系统拓展困难，一旦添加新产品就不得不修改工厂逻辑。
+4.简单工厂模式使用了静态工厂方法，造成工厂角色无法形成基于继承的登记结构。
+简单工厂模式试用的环境
+1.工厂负责对象比较少，由于创建的对象较少。
+2.客户端只知道传入工厂类的参数，对于创建的对象并不关心。
+简单工厂模式实例 本例子出子《java设计模式》一书
+某软件公司要基于Java语言开发一套图标库，该图表库可以为应用系统剃光多种不同外观的图标库，
+例如：柱状图，饼状图，折线图。现希望通过设置不同的参数即可得到不同类型的图表，并且可以较为方便地对图表库进行拓展。
+/** * 抽象图表接口，充当抽象类 */ public interface Chart { public void display(); } /** * 柱状图类，充当具体产品类； */ public class HistogramChart implements Chart { @Override public void display() { System.out.println(&#34;显示柱状图！&#34;); } public HistogramChart(){ System.out.println(&#34;创建柱状图！&#34;); } } /** * 饼状图类，充当具体产品类； */ public class PieChart implements Chart { @Override public void display() { System."/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://kongfutiger17.github.io/images/profile.jpg" alt="profile picture">
+            <h3 title=""><a href="/">I&#39;m Kongfutiger</a></h3>
+            <div class="description">
+                <p>Tiger</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://de.linkedin.com/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/lxndrblz/anatole/" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://www.instagram.com/" rel="me" aria-label="instagram">
+                    <i class="fab fa-instagram fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:mail@alexbilz.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Kongfutiger 2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>简单方法模式</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Wed, May 26, 2021</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">2-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h1 id="简单工厂模式">简单工厂模式</h1>
+<p>创建型模式关注对象的创建过程，是一类最常见的设计模式，在软件开发中的应用非常广泛。创建型模式描述如何将对象的创建和使分离，让用户在使用对象时无须关心对象的创建细节，从而降低系统的耦合度，让设计方案易于修改和扩展。</p>
+<p>简单工厂模式是最简单的设计模式之一，他虽然不属于GoF的23中设计模式，但是应用也比较频繁，同时他是学习其他创建模型的基础。</p>
+<p>创建型模式包括：简单工厂模式，工厂方法模式，抽象工厂模式，建造者模式，原型模式，单例模式</p>
+<h2 id="简单工厂模式的结构">简单工厂模式的结构</h2>
+<p>Factory（工厂角色）：工厂角色即工厂类，他是简单工厂模式的核心；</p>
+<p>Product（抽象产品类）：工厂类创建的所有对象的父类，封装了各种产品对象的公有方法。</p>
+<p>ConcreteProduct（具体产品角色）：简单工厂模式创建的目标，所有被创建的对象都充当这个角色的某个具体类的实例。</p>
+<h2 id="简单工厂模式的优缺点">简单工厂模式的优缺点</h2>
+<p>优点：1工厂类包含必要的判断逻辑，可以决定在什么时候创建那一个产品类的实例，客户端可以不同创建产品对象。</p>
+<p>2.客户端无须知道所创建的具体产品类的类名，只需要知道具体产品类多对应的参数即可，对于一些复杂的类名，通过简单工厂模式可以在一定程度上减少使用者的记忆量。</p>
+<p>缺点：</p>
+<p>1.由于工厂类集中了所有产品的创建逻辑，职责过重，但不能正常工作，整个系统都要受到影响。</p>
+<p>2.使用简单工厂模式会增加系统中类的个数，增加系统复杂度。</p>
+<p>3.系统拓展困难，一旦添加新产品就不得不修改工厂逻辑。</p>
+<p>4.简单工厂模式使用了静态工厂方法，造成工厂角色无法形成基于继承的登记结构。</p>
+<p>简单工厂模式试用的环境</p>
+<p>1.工厂负责对象比较少，由于创建的对象较少。</p>
+<p>2.客户端只知道传入工厂类的参数，对于创建的对象并不关心。</p>
+<h2 id="简单工厂模式实例">简单工厂模式实例</h2>
+<p>本例子出子《java设计模式》一书</p>
+<p>某软件公司要基于Java语言开发一套图标库，该图表库可以为应用系统剃光多种不同外观的图标库，</p>
+<p>例如：柱状图，饼状图，折线图。现希望通过设置不同的参数即可得到不同类型的图表，并且可以较为方便地对图表库进行拓展。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 抽象图表接口，充当抽象类
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Chart</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">display</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 柱状图类，充当具体产品类；
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HistogramChart</span> <span style="color:#66d9ef">implements</span> Chart <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">display</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;显示柱状图！&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HistogramChart</span><span style="color:#f92672">(){</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;创建柱状图！&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 饼状图类，充当具体产品类；
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PieChart</span> <span style="color:#66d9ef">implements</span> Chart <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">display</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;显示饼状图!&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PieChart</span><span style="color:#f92672">(){</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;创建饼状图!&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 折线图类，充当具体产品类；
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LineChart</span> <span style="color:#66d9ef">implements</span> Chart <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">display</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;显示折线图!&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">LineChart</span><span style="color:#f92672">(){</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;创建折线图!&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChartFactory</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Chart <span style="color:#a6e22e">getChart</span><span style="color:#f92672">(</span>String type<span style="color:#f92672">){</span>
+     Chart chart <span style="color:#f92672">=</span><span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+     <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>type<span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;histogram&#34;</span><span style="color:#f92672">)){</span>
+         chart <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HistogramChart<span style="color:#f92672">();</span>
+          System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;初始化设置柱状图!&#34;</span><span style="color:#f92672">);</span>
+     <span style="color:#f92672">}</span>
+     <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>type<span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Line&#34;</span><span style="color:#f92672">)){</span>
+         chart <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> LineChart<span style="color:#f92672">();</span>
+         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;初始化设置折线图!&#34;</span><span style="color:#f92672">);</span>
+     <span style="color:#f92672">}</span>
+     <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>type<span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;pie&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+         chart <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> PieChart<span style="color:#f92672">();</span>
+         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;初始化设置饼状图!&#34;</span><span style="color:#f92672">);</span>
+     <span style="color:#f92672">}</span>
+     <span style="color:#66d9ef">return</span> chart<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 客户端测试类
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Client</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+       Chart chart <span style="color:#f92672">=</span> ChartFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getChart</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;histogram&#34;</span><span style="color:#f92672">);</span><span style="color:#75715e">//通过静态工厂方法创建产品
+</span><span style="color:#75715e">//        Chart chart;
+</span><span style="color:#75715e">//        String Type = XMLUtil.getChartType();
+</span><span style="color:#75715e">//        chart = ChartFactory.getChart(&#34;type&#34;);
+</span><span style="color:#75715e"></span>        chart<span style="color:#f92672">.</span><span style="color:#a6e22e">display</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>通过XMl配置文件和Utill类可以是客户端更遵守开闭原则</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">XMLUtil</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">getChartType</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+        DocumentBuilderFactory dFactory <span style="color:#f92672">=</span> DocumentBuilderFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">();</span>
+        DocumentBuilder builder <span style="color:#f92672">=</span> dFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">newDocumentBuilder</span><span style="color:#f92672">();</span>
+        Document doc<span style="color:#f92672">;</span>
+        doc <span style="color:#f92672">=</span>builder<span style="color:#f92672">.</span><span style="color:#a6e22e">parse</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;src//com//he//simplefactory//config.xml&#34;</span><span style="color:#f92672">));</span>
+
+        <span style="color:#75715e">//获取包含图表类型的文本节点
+</span><span style="color:#75715e"></span>            NodeList nl <span style="color:#f92672">=</span> doc<span style="color:#f92672">.</span><span style="color:#a6e22e">getElementsByTagName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;chartType&#34;</span><span style="color:#f92672">);</span>
+            Node classNode <span style="color:#f92672">=</span> nl<span style="color:#f92672">.</span><span style="color:#a6e22e">item</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">getFirstChild</span><span style="color:#f92672">();</span>
+            String chartType <span style="color:#f92672">=</span> classNode<span style="color:#f92672">.</span><span style="color:#a6e22e">getNodeValue</span><span style="color:#f92672">().</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">return</span> chartType<span style="color:#f92672">;</span>
+
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34; ?&gt;</span>
+<span style="color:#f92672">&lt;config&gt;</span>
+    <span style="color:#f92672">&lt;chartType&gt;</span>histogram<span style="color:#f92672">&lt;/chartType&gt;</span>
+<span style="color:#f92672">&lt;/config&gt;</span>
+</code></pre></div>
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

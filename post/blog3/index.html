@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Kongfutiger | SQL基础 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.76.5" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Tiger">
+    
+    <link rel="stylesheet"
+          href="https://kongfutiger17.github.io/css/style.min.2b188541d728e8afd69a6f1b8b83f89f2b138d671fb728eff20ff3f3dcf5b55e.css"
+          integrity="sha256-KxiFQdco6K/Wmm8bi4P4nysTjWcftyjv8g/z89z1tV4="
+          crossorigin="anonymous"
+          type="text/css"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://kongfutiger17.github.io/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kongfutiger17.github.io/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kongfutiger17.github.io/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kongfutiger17.github.io/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://kongfutiger17.github.io/post/blog3/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://kongfutiger17.github.io/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kongfutiger17.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="SQL基础"/>
+<meta name="twitter:description" content="mysql基础啥的老是忘记，所以想写一篇博客，帮助自己学习，本博客参考《MySql必知必会》。
+简述 MySql是一种DBMS，即它是一种数据库软件。
+多条SQL语句必须以分号(;)分隔，MySql和多数DBMS一样，不需要再单条Sql语句后加分号。但是特定的DBMS可能必须在单条SQL语句后加上分号。
+SQL语句不区分大小写，例如SELECT与select是相同的，即使写成Select也行。但是将SQL关键字使用大写，将列名，表明使用小写，可以使代码更易阅读和调试，这是一种好习惯；
+MySql在处理SQL语句时，所有的空格都会被忽略。
+这里我创建了2张表并并插入了一些数据，用于测试；
+CREATE TABLE vendors ( vend_id INT NOT NULL PRIMARY KEY, vend_name VARCHAR(255) NOT NULL, vend_city VARCHAR(255) NOT NULL, vend_zip CHAR(255) NOT NULL, vend_country VARCHAR(255) NOT NULL ); CREATE TABLE products ( products_id INT NOT NULL PRIMARY KEY, vend_id INT NOT NULL, products_name VARCHAR(255) NOT NULL, products_price decimal(17) NOT NULL, products_desc VARCHAR(255) NOT NULL ); SElECT 查询单列信息:
+SELECT products_name FROM `products` ORDER BY 如果想已某个列作为排序则可以使用ORDER BY进行排序"/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://kongfutiger17.github.io/images/profile.jpg" alt="profile picture">
+            <h3 title=""><a href="/">I&#39;m Kongfutiger</a></h3>
+            <div class="description">
+                <p>Tiger</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://de.linkedin.com/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/lxndrblz/anatole/" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://www.instagram.com/" rel="me" aria-label="instagram">
+                    <i class="fab fa-instagram fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:mail@alexbilz.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Kongfutiger 2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>SQL基础</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Wed, May 26, 2021</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">3-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>mysql基础啥的老是忘记，所以想写一篇博客，帮助自己学习，本博客参考《MySql必知必会》。</p>
+<h2 id="简述">简述</h2>
+<p><strong>MySql是一种DBMS，即它是一种数据库软件。</strong></p>
+<p>多条SQL语句必须以分号(;)分隔，MySql和多数DBMS一样，不需要再单条Sql语句后加分号。但是特定的DBMS可能必须在单条SQL语句后加上分号。</p>
+<p>SQL语句不区分大小写，例如SELECT与select是相同的，即使写成Select也行。但是将SQL关键字使用大写，将列名，表明使用小写，可以使代码更易阅读和调试，这是一种好习惯；</p>
+<p>MySql在处理SQL语句时，所有的空格都会被忽略。</p>
+<p>这里我创建了2张表并并插入了一些数据，用于测试；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> vendors
+(
+vend_id INT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+vend_name VARCHAR(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+vend_city VARCHAR(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+vend_zip CHAR(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+vend_country VARCHAR(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>
+);
+
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> products
+(
+products_id INT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+vend_id INT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+products_name VARCHAR(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+products_price decimal(<span style="color:#ae81ff">17</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+products_desc VARCHAR(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>
+);
+
+</code></pre></div><h1 id="select">SElECT</h1>
+<p>查询单列信息:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">SELECT</span> products_name <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>products<span style="color:#f92672">`</span>
+</code></pre></div><h3 id="order-by">ORDER BY</h3>
+<p>如果想已某个列作为排序则可以使用ORDER BY进行排序</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">SELECT</span> products_name <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>products<span style="color:#f92672">`</span>
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> products_name
+</code></pre></div><p>ORDER BY可以指定多个列排序，列名之间用逗号隔开即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">SELECT</span> products_id , products_price, products_name 
+<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>products<span style="color:#f92672">`</span>
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> products_id, products_price
+</code></pre></div><p>ORDER BY默认为升序(A到Z)排序，使用DESC关键字可以使用降序排序；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">SELECT</span> products_id, products_name 
+<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>products<span style="color:#f92672">`</span>
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> products_id <span style="color:#66d9ef">DESC</span>
+</code></pre></div><h3 id="limit">LIMIT</h3>
+<p>LIMIT为返回的行数，配合ORDER BY可以找出一个列中最高或者最低的值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> products_price
+<span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> products_price	
+<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><h2 id="数据过滤">数据过滤</h2>
+<h3 id="where">WHERE</h3>
+<p>WHERE语句一般会配合AND 或者OR 操作符 AND(OR)可以过滤多个条件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> products_name,products_price
+<span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">WHERE</span> vend_id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AND</span> products_id<span style="color:#f92672">=</span><span style="color:#ae81ff">11</span>
+<span style="color:#75715e">-- WHERE vend_id=1 OR products_id=11
+</span></code></pre></div><p>需要注意的WHERE可以包含任意数目的AND和OR操作符，但是AND的优先级比OR高，为了防止组合错误需要用圆括号分组对应的操作符。</p>
+<h3 id="in">IN</h3>
+<p>IN操作符用来指定条件范围，范围中的每个条件都可以进行匹配。用法为<strong>IN (,)</strong></p>
+<p>IN操作符的功能其实与OR一样。但是IN操作符的语法跟简介，查询较快，最重要的是IN操作符可以包含其他SELECT语句</p>
+<h3 id="not">NOT</h3>
+<p>NOT操作符否定跟在他之后的条件，在复杂的语句中NOT是非常有用的，例如与IN操作符一起使用</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> products_name,products_price
+<span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">WHERE</span> products_id <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">IN</span> (<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">15</span>)
+</code></pre></div><h3 id="通配符">通配符</h3>
+<p>MySql中的通配符分别为(%)通配符与(_)通配符<br>
+他们的功能基本一样，唯一的区别是%可以匹配0个或者多个字符，而_只能匹配单个字符。通配符一般配合LIKE操作符使用，但是通配符不能匹配为NULL的值,主要这里用的是单引号。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> products_id,products_name,products_desc
+<span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">WHERE</span> products_id <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;1%&#39;</span>
+<span style="color:#75715e">-- WHERE products_id LIKE &#39;1_&#39;
+</span></code></pre></div><h3 id="字段拼接">字段拼接</h3>
+<p>多数DBMS使用+或者||来时间拼接，但是MySQL使用Concat()函数来实现拼接</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> CONCAT(products_desc , products_name) <span style="color:#66d9ef">AS</span> products_title
+<span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">WHERE</span> products_id <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;1_&#39;</span>
+</code></pre></div><p>另外MySQL支持别名，别名使用AS关键字赋予</p>
+<h2 id="函数">函数</h2>
+<h3 id="文本处理函数">文本处理函数</h3>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Left()</td>
+<td>返回串左边的字符</td>
+</tr>
+<tr>
+<td>Right()</td>
+<td>返回串右边的字符</td>
+</tr>
+<tr>
+<td>Length()</td>
+<td>返回串的长度</td>
+</tr>
+<tr>
+<td>Locate()</td>
+<td>找出串的一个子串</td>
+</tr>
+<tr>
+<td>Lower()</td>
+<td>将串转换为小写</td>
+</tr>
+<tr>
+<td>Upper()</td>
+<td>将串转换为大写</td>
+</tr>
+<tr>
+<td>LTrim()</td>
+<td>去掉串左边的空格</td>
+</tr>
+<tr>
+<td>RTrim()</td>
+<td>去掉串右边的空格</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="聚集函数">聚集函数</h3>
+<p>聚集函数运行在组上，计算和返回单个函数的值</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AVG()</td>
+<td>返回某列的平均值</td>
+</tr>
+<tr>
+<td>COUNT()</td>
+<td>返回某列的行数</td>
+</tr>
+<tr>
+<td>MAX()</td>
+<td>返回某列的最大值</td>
+</tr>
+<tr>
+<td>MIN()</td>
+<td>返回某列的最小值</td>
+</tr>
+<tr>
+<td>SUN()</td>
+<td>返回某列之和</td>
+</tr>
+</tbody>
+</table>
+<p>下面的例子返回vendors表的行数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> num_vendors
+<span style="color:#66d9ef">FROM</span> vendors
+</code></pre></div><p>AVG()函数忽略值为NULL的行<br>
+AVG()函数可以使用DISTINCT参数，使用后平均值只考虑不同各个不同的的值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">AVG</span>(products_price) <span style="color:#66d9ef">AS</span> avg_price
+<span style="color:#75715e">-- SELECT AVG(DISTINCT products_price) AS avg_price
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">WHERE</span> vend_id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>聚集函数可以组合使用例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> num_item, 
+       <span style="color:#66d9ef">AVG</span>(products_price) <span style="color:#66d9ef">AS</span> avg_price
+	   <span style="color:#66d9ef">MAX</span>(products_price) <span style="color:#66d9ef">AS</span> max_price
+<span style="color:#66d9ef">FROM</span> products
+</code></pre></div><hr>
+<h3 id="分组查询">分组查询</h3>
+<p>分组是在SELECT语句的GROUP BY子句建立的，分组允许把数据分为多个逻辑组，以便能对每个组进行聚集计算。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_id,<span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> num_product
+<span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> vend_id;
+</code></pre></div><p>在这个例子中GROUP BY指示MySQL俺vend_id排序分组
+GROUP BY子句必须在WHERE子句之后出现，ORDER BY子句之前出现</p>
+<h3 id="having">HAVING</h3>
+<p>HAVING子句跟WHERE子句非常相似，HAVING可以实现WHERE所有的功能，唯一的差别是WHERE过滤行，HAVING过滤分组.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_id,<span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> num_product
+<span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> vend_id
+<span style="color:#66d9ef">HAVING</span> vend_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><h3 id="子查询">子查询</h3>
+<p>子查询就是嵌套在其他查询中的查询。下面是个使用子查询的例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">SELECT</span> products_desc
+<span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">WHERE</span> vend_id <span style="color:#66d9ef">IN</span>(<span style="color:#66d9ef">SELECT</span> vend_id
+<span style="color:#66d9ef">FROM</span> products
+<span style="color:#66d9ef">WHERE</span> products_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;显卡&#39;</span>)
+</code></pre></div><p>可以看出，子查询是先从嵌套的语句开始，在执行嵌套外面的语句。<br>
+ </p>
+<h2 id="联结">联结</h2>
+<p>SQL最强大的功能之一就是能在数据检索查询的执行中联结(join)表，在能有效的使用联结前，必须了解关系表以及关系数据库设计的一些基础。</p>
+<h3 id="关系表">关系表</h3>
+<p>在设计数据库表格时，相同的数据出现多次绝不是一件好事，此因素是设计关系数据库设计的基础，。关系表的设计就是要保证把信息拆解成多个表，一类数据一个表。各表通过某些常用值(即关系设计中的关系)互相关联。<br>
+这里引出了外键和可伸缩性的概念<br>
+<strong>外键</strong>：外键为某个表中的一列，它包含另一个表的主键，定义了两个表之间的关系。<br>
+<strong>可伸缩性</strong>：能够适应不断增加的工作量而不失败，设计良好的数据库或应用程序称之为<strong>可伸缩性好</strong>。<br>
+分解数据为多个表能更有效的存储，并具有更大的可伸缩性，正因如此单条SELECT语句就无法检索出数据，此时就需要使用联结。联结不是物理实体，他在实际的数据库表中不存在，MySQL根据需求建立联结，它存在于查询的执行当中。</p>
+<h3 id="利用where创建联结">利用WHERE创建联结</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_name,vend_city,products_name,products_desc
+<span style="color:#66d9ef">FROM</span> vendors , products
+<span style="color:#66d9ef">WHERE</span> products.vend_id<span style="color:#f92672">=</span>vendors.vend_id
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> vend_name
+</code></pre></div><p>注：如果这你没有使用WHERE子句，返回的结果为<strong>笛卡尔积</strong>，检索出的行的数目是第一个表中行数乘以第二张表的行数，这种情况有时候称为<strong>叉联结</strong></p>
+<h3 id="内部联结">内部联结</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> vend_name,vend_city,products_name,products_desc
+<span style="color:#66d9ef">FROM</span> vendors <span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> products 
+<span style="color:#66d9ef">ON</span> products.vend_id<span style="color:#f92672">=</span>vendors.vend_id
+<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> vend_name
+</code></pre></div><p>这个语句和上面的实现相同的功能，但是FROM子句的组成部分以INNER   JOIN  xxx  ON 指定。在使用联结时，应首选INNER  JOIN语法。</p>
+<h3 id="自联结">自联结</h3>
+<p>自连接通过别名实现自己与“自己”联结。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> p1.products_name , p2.products_price
+<span style="color:#66d9ef">FROM</span> products <span style="color:#66d9ef">AS</span> p1 <span style="color:#66d9ef">JOIN</span> products <span style="color:#66d9ef">AS</span> p2 
+<span style="color:#66d9ef">ON</span> p1.vend_id<span style="color:#f92672">=</span>p2.products_id
+</code></pre></div><h3 id="外联结">外联结</h3>
+<p>外连接与内部联结的不同之处在于外连接会包括没有关联的行，再使用外连接（OUTER JOIN)语法时，必须使用LEFT或者RIGHT关键字指定包括其所有行的表。LEFT指的是左边的表 RIGHT指的是右边的表，下边的例子的查询结果就包括左边（vendors表）中的所有vend_id&gt;2的行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">SELECT</span> vendors.vend_name , products.products_name
+<span style="color:#66d9ef">FROM</span> vendors <span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> products
+<span style="color:#66d9ef">ON</span> vendors.vend_id<span style="color:#f92672">=</span>products.vend_id <span style="color:#66d9ef">AND</span> vendors.vend_id<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">2</span>
+</code></pre></div><p>注：使用联结时一定要把表名带上！<br>
+ </p>
+<h3 id="组合查询">组合查询</h3>
+<p>MySQL可以使用<strong>UNION</strong>关键字来进行组合查询。<br>
+UNION关键字的使用很简单，只需要在SELECT语句后面加上关键字UNION
+·UNION中的查询必须包含相同的列，表达式后者聚集函数。<br>
+·UNION默认去重重复的行，如果想返回所有行则可以使用<strong>ALL UNION;</strong><br>
+·使用UNION组合查询时，只能使用一条ORDER  BY子句，它必须出现在最后一条SELECT语句之后。</p>
+<p> </p>
+<h2 id="事务处理">事务处理</h2>
+<p>事务处理可以用来维护数据库的完整性，它保证成批的MySQL操作要么完全执行，要么完全不执行 <br>
+并非是所有的引擎都支持事务处理,MySQL默认的InnoDB支持事务处理。</p>
+<p>在了解事务处理之前首先要了解几个关键词：<br>
+·<strong>事务</strong>：指一组SQL语句<br>
+·<strong>回退</strong>：指撤销指定的SQL语句的过程
+·<strong>提交</strong>：指将未存储的SQL语句结果写入数据库表<br>
+·<strong>保留点</strong>：指事务处理中设置的临时占位符，你可以对它发布回退。</p>
+<h3 id="rollback">ROLLBACK</h3>
+<p>MySQL的ROLLBACK命令用来回退MYSQL语句。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> vendors_copy2;
+<span style="color:#66d9ef">START</span> <span style="color:#66d9ef">TRANSACTION</span>;
+<span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">FROM</span> vendors_copy2;
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> vendors_copy22;
+<span style="color:#66d9ef">ROLLBACK</span>;
+<span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> vendors_copy2;
+</code></pre></div><p>ROLLBACK只能在一个事务处理内使用</p>
+<h3 id="commit">COMMIT</h3>
+<p>在事务处理块中，提交不会隐含地进行。为进行明确的提交，使用COMMIT语句，如下所示。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#66d9ef">START</span> <span style="color:#66d9ef">TRANSACTION</span>;
+<span style="color:#66d9ef">DELETE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> vendors_copy2;
+<span style="color:#66d9ef">DELETE</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> vendors_copy3;
+<span style="color:#66d9ef">COMMIT</span>;
+</code></pre></div><p>在这个例子中，使用事务处理保证不会出现部分删除，最后的COMMIT语句仅在不出错时写出更改。如果第一条DELETE起作用，第二条失败，则DELETE不会提交</p>
+<h3 id="保留点">保留点</h3>
+<p>在事务中，为了支持回退部分事务，必须能在事务处理块中合适的位置放占位符，这样如果回退，可以退回到占位符的位置。
+可以使用<strong>SAVEPOINT</strong>语句<br>
+例如，设置一个保留点</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">SAVEPOINT delete1;
+</code></pre></div><p>在返回时：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ROLLBACK</span> <span style="color:#66d9ef">TO</span> delete1;
+</code></pre></div>
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

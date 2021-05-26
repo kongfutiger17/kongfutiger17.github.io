@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Kongfutiger | 线程同步 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.76.5" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Tiger">
+    
+    <link rel="stylesheet"
+          href="https://kongfutiger17.github.io/css/style.min.2b188541d728e8afd69a6f1b8b83f89f2b138d671fb728eff20ff3f3dcf5b55e.css"
+          integrity="sha256-KxiFQdco6K/Wmm8bi4P4nysTjWcftyjv8g/z89z1tV4="
+          crossorigin="anonymous"
+          type="text/css"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://kongfutiger17.github.io/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kongfutiger17.github.io/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kongfutiger17.github.io/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kongfutiger17.github.io/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://kongfutiger17.github.io/post/blog2/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://kongfutiger17.github.io/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kongfutiger17.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="线程同步"/>
+<meta name="twitter:description" content="线程同步 ·处理多线程问题时，多个线程访问同一个对象，并且某些线程还想修改这个对象。核实后我们就需要线程同步。线程同步其实就是一种等待机制，多个需要同时访问此对象的线程进入这个对象的等待池形成队列，等待前面线程使用完毕，下一个线程再使用。 ·由于同一个进程的多个线程共享一块储存空间，在带来方便的同时，也会带来访问冲突问题，为了保证数据在方法中被访问时的正确性，在访问时加入锁机制synchronized当一个线程获得对象的排它锁，独占资源，其他线程必须等待，使用后释放锁即可。
+·1一个线程持有锁会导致其他所有需要此锁的线程挂起；
+·2在多线程竞争下，加锁，释放锁会导致比较多的上下文切换 和 调度延迟，引起性能问题；
+·3如果一个优先级搞得线程等待一个优先级低的线程释放锁 会导致优先级倒置，引发性能问题
+同步方法 ·我们可以通过synchronized关键字来使线程同步，它包括两种用法：synchronized方法和synchronized块；
+public synchronized void method（int args）{}
+synchronized(OBJ){}
+·synchronized方法控制“对象”的访问，每个对象对应一把锁，每个synchronized方法都必须获得调用该方法的锁才能执行，否则线程会阻塞，方法一旦执行，就独占该锁，知道方法返回才释放锁，后面被阻塞的线程才能获得这个锁，继续执行。
+试例 public class BuyTicket { public static void main(String[] args) { Ticket ticket =new Ticket(); new Thread(ticket,&#34;t1&#34;).start(); new Thread(ticket,&#34;t2&#34;).start(); new Thread(ticket,&#34;t3&#34;).start(); new Thread(ticket,&#34;t4&#34;).start(); } } class Ticket implements Runnable{ private int ticketNumbers =10; boolean flag ; @Override public void run() { while (flag=true){ try { buy(); } catch (InterruptedException e) { e.printStackTrace(); } } } private synchronized void buy() throws InterruptedException { if (ticketNumbers&lt;=0){ flag=false; return; } Thread."/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://kongfutiger17.github.io/images/profile.jpg" alt="profile picture">
+            <h3 title=""><a href="/">I&#39;m Kongfutiger</a></h3>
+            <div class="description">
+                <p>Tiger</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://de.linkedin.com/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/lxndrblz/anatole/" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://www.instagram.com/" rel="me" aria-label="instagram">
+                    <i class="fab fa-instagram fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:mail@alexbilz.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Kongfutiger 2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>线程同步</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Sun, Mar 14, 2021</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">One-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h1 id="线程同步">线程同步</h1>
+<p>·处理多线程问题时，多个线程访问同一个对象，并且某些线程还想修改这个对象。核实后我们就需要线程同步。线程同步其实就是一种等待机制，多个需要同时访问此对象的线程进入这个对象的等待池形成队列，等待前面线程使用完毕，下一个线程再使用。
+·由于同一个进程的多个线程共享一块储存空间，在带来方便的同时，也会带来访问冲突问题，为了保证数据在方法中被访问时的正确性，在访问时加入<strong>锁机制synchronized</strong>当一个线程获得对象的排它锁，独占资源，其他线程必须等待，使用后释放锁即可。<br>
+·1一个线程持有锁会导致其他所有需要此锁的线程挂起；<br>
+·2在多线程竞争下，加锁，释放锁会导致比较多的上下文切换 和 调度延迟，引起性能问题；<br>
+·3如果一个优先级搞得线程等待一个优先级低的线程释放锁 会导致优先级倒置，引发性能问题</p>
+<h1 id="同步方法">同步方法</h1>
+<p>·我们可以通过synchronized关键字来使线程同步，它包括两种用法：synchronized方法和synchronized块；<br>
+<strong>public synchronized void method（int args）{}</strong><br>
+<strong>synchronized(OBJ){}</strong><br>
+·synchronized方法控制“对象”的访问，每个对象对应一把锁，每个synchronized方法都必须获得调用该方法的锁才能执行，否则线程会阻塞，方法一旦执行，就独占该锁，知道方法返回才释放锁，后面被阻塞的线程才能获得这个锁，继续执行。</p>
+<h1 id="试例">试例</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BuyTicket</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Ticket ticket <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> Ticket<span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>ticket<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;t1&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>ticket<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;t2&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>ticket<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;t3&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>ticket<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;t4&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Ticket</span> <span style="color:#66d9ef">implements</span> Runnable<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> ticketNumbers <span style="color:#f92672">=</span>10<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">boolean</span> flag <span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>flag<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                buy<span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">buy</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ticketNumbers<span style="color:#f92672">&lt;=</span>0<span style="color:#f92672">){</span>
+            flag<span style="color:#f92672">=</span><span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>100<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34;拿到了&#34;</span><span style="color:#f92672">+</span>ticketNumbers<span style="color:#f92672">--);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>output</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">t1拿到了10
+t1拿到了9
+t1拿到了8
+t1拿到了7
+t1拿到了6
+t1拿到了5
+t1拿到了4
+t1拿到了3
+t4拿到了2
+t3拿到了1
+</code></pre></div><p>当方法加入synchronized关键字时变为同步方法。</p>
+<h1 id="死锁">死锁</h1>
+<p>·多个线程各占有一些共享资源，并且互相等待其他线程占有的资源才能运行，而导致两个或多个线程都在等待对方释放资源，都停止执行的情况。某一个同步块同时拥有 **“两个对象的锁”**时，就可能发生“死锁”的问题。</p>
+<h1 id="lock">Lock</h1>
+<p>·从JDK5.0开始，Java提供了更加强大的线程同步机制——通过显示定义同步锁来实现对象同步。同步锁使用Lock对象充当。<br>
+·java.util.concurrent.locks.Lock接口是控制多个线程对共享资源进行访问的工具。锁提供了对共享资源的独占访问，每次只能有一个线程对Lock对象加锁，线程开始访问共享资源之前应先过得Lock对象。<br>
+·ReentrantLock类实现了Lock，他拥有与synchronized向东的并发性和内存语义，在线程安全控制中，比较常见的是ReentrantLock，可以显示加锁、释放锁。<br>
+例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.he.demo2<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.util.concurrent.locks.ReentrantLock<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestLock</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        TestLock testLock <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> TestLock<span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>testLock<span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>testLock<span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>testLock<span style="color:#f92672">).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+   <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">int</span> ticketNums<span style="color:#f92672">=</span>10<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> ReentrantLock lock <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> ReentrantLock<span style="color:#f92672">();</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                lock<span style="color:#f92672">.</span><span style="color:#a6e22e">lock</span><span style="color:#f92672">();</span><span style="color:#75715e">//加锁
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ticketNums <span style="color:#f92672">&gt;=</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                        Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>1000<span style="color:#f92672">);</span>
+                    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+                    <span style="color:#f92672">}</span>
+                    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>ticketNums<span style="color:#f92672">--);</span>
+                <span style="color:#f92672">}</span>
+                <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                    <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+                lock<span style="color:#f92672">.</span><span style="color:#a6e22e">unlock</span><span style="color:#f92672">();</span><span style="color:#75715e">//解锁
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h1 id="synchronized与lock的对比">synchronized与Lock的对比</h1>
+<p>·Lock是显式锁，手动开启和关闭。synchronized是隐式锁，出了作用域自动释放<br>
+·Lock只有代码块锁，synchronized与代码块锁和方法锁。<br>
+·使用Lock锁，JVM将花费较少的时间来调度线程，性能更好。并且具有更高的扩展性（提供更多子类）</p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

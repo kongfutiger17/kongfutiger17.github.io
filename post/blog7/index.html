@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Kongfutiger | java容器 </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.76.5" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Tiger">
+    
+    <link rel="stylesheet"
+          href="https://kongfutiger17.github.io/css/style.min.2b188541d728e8afd69a6f1b8b83f89f2b138d671fb728eff20ff3f3dcf5b55e.css"
+          integrity="sha256-KxiFQdco6K/Wmm8bi4P4nysTjWcftyjv8g/z89z1tV4="
+          crossorigin="anonymous"
+          type="text/css"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="https://kongfutiger17.github.io/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kongfutiger17.github.io/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kongfutiger17.github.io/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kongfutiger17.github.io/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://kongfutiger17.github.io/post/blog7/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://kongfutiger17.github.io/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kongfutiger17.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="java容器"/>
+<meta name="twitter:description" content="本文主要初步介绍java中常见的容器，为了学习于研究写下此文，作为学习总结。若有错误，欢迎指点。
+如果一个程序只包含固定数量的且生命期都是已知的对象，那么这是一个非常简单的程序。 通常，程序总是根据运行时才知道的某些条件去创建新的新的对象。在此之前不会知道对象的数量，甚至不知道确切的类型。数组是保存一组对象的最有效的方式，但是数组尺寸固定，而在一般情况下，你在写程序时并不知道需要多少个对象，因此数组并不是一个优秀的方案。
+java容器类分为2个不同的概念，他们的用途都是保存对象；
+Collection Collection:是一个独立的元素序列，这些元素都服从一条或者多条规则。
+·List必须按照插入的顺序保存元素
+·Set不能用重复的元素
+·Queue按照排队规则确定对象产生的顺序
+Map Map:一组成对的&quot;键值对&quot;对象，允许使用键来找查值。
+迭代器 在我们使用容器时会发现一个问题：如果我们原本对着List编码，但是后来发现如果能把相同的代码运用到Set上，将会大大方便编程，JAVA引入迭代器解决了这一问题。
+迭代器（是一种设计模式）的作用是遍历并选择序列中的对象，程序员不用知道该序列的底层结构,java使Iterable接口实现迭代器。
+Iterable接口被Collection所继承。其中的iterator方法：Iterator &lt; T&gt; iterator()返回类型为 T元素的迭代器。
+Java的Iterator只能单向移动，在Iterator接口中
+·next()方法获得序列中的下一个元素。
+·hasNext()方法检查序列中是否还有元素。
+·remove()方法将迭代器新近放回的元素删除。
+List List接口在Collection的基础上添加了大量的方法，使得可以在List的中间插入和移除元素。
+List有2种常见类型：
+ArrayList可调整大小的数组的实现List接口。 实现所有可选列表操作，并允许所有元素，包括null 。 除了实现List 接口之外，该类还提供了一些方法来操纵内部使用的存储列表的数组的大小。 （这个类是大致相当于Vector，不同之处在于它是不同步的）。
+arrayList擅长于随机访问，当从ArrayList的中间位置插入或者删除元素时，需要对数组进行复制、移动、代价比较高。因此，它适合随机查找和遍历，不适合插入和删除。
+LinkedList 双链表实现了List和Deque接口。 实现所有可选列表操作，并允许所有元素（包括null ）。 LinkedList通过较低的代价在List中间进行插入和删除操作，体用了优化的顺序访问。但是随机访问方面比较慢，它的特性集较ArrayList更大。
+ListIterator ListIterator是Iterator的子类型，他只能用于List类的访问。ListIterator能够双向访问，也可以从List中插入和删除元素。
+Set ·set不保存重复的元素（包括null），Set最常见的操作是找查。
+·Set具有与Collection一样的接口，因此没有任何额外的功能，不像前面两个不同的List。实际上Set就是Collection，只是行为不同(这是继承与多态思想的典型应用：表现不同的行为)。
+Set的主要实现由3种 HashSet实现Set接口，由哈希表（实际为HashMap实例）支持，使用散列函数储存数据具有良好的存取和查找性能。
+LinkedHashSet也是使用了散列，同样就要良好的找查性能，使用了链表来维护元素插入的顺序。
+TreeSet 将元素储存在红-黑树的数据结构中（除了TreeSet外的所有Set都具有和Collection完全一样的接口）。
+Map ·Map与Collection唯一重叠就是Map可以使用entrySet()和Values()方法来产生Collection
+Hash和HashSet集合不能保证元素的顺序一样，HashMap也不能保证key-value对的顺序。
+LinkedHashMap也使用双向链表来维护key-value对的次序，该链表负责维护Map的迭代顺序
+TreeMap是一个红黑树结构，每个键值对都作为红黑树的一个节点
+Queue ·Queue(队列)是一个典型的先进先出的容器，事物放进容器的顺序与取出的顺序是相同的。
+·LinkedList实现了Queue接口，因此LinkedList可以用作Queue的一种实现。
+·Queue接口中的方法都是独立的，在创建Queue功能实现时，不需要使用Collection方法。
+PriorityQueue优先队列声明了下一个弹出的元素是最需要的元素（具有最高优先级）"/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://kongfutiger17.github.io/images/profile.jpg" alt="profile picture">
+            <h3 title=""><a href="/">I&#39;m Kongfutiger</a></h3>
+            <div class="description">
+                <p>Tiger</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://de.linkedin.com/" rel="me" aria-label="Linkedin">
+                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/lxndrblz/anatole/" rel="me" aria-label="GitHub">
+                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://www.instagram.com/" rel="me" aria-label="instagram">
+                    <i class="fab fa-instagram fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:mail@alexbilz.com" rel="me" aria-label="e-mail">
+                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Kongfutiger 2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>java容器</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Wed, May 26, 2021</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">One-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>本文主要初步介绍java中常见的容器，为了学习于研究写下此文，作为学习总结。若有错误，欢迎指点。</p>
+<h3 id="如果一个程序只包含固定数量的且生命期都是已知的对象那么这是一个非常简单的程序">如果一个程序只包含固定数量的且生命期都是已知的对象，那么这是一个非常简单的程序。</h3>
+<p>通常，程序总是根据运行时才知道的某些条件去创建新的新的对象。在此之前不会知道对象的数量，甚至不知道确切的类型。数组是保存一组对象的最有效的方式，但是数组<strong>尺寸固定</strong>，而在一般情况下，你在写程序时并不知道需要多少个对象，因此数组并不是一个优秀的方案。<br>
+java容器类分为2个不同的概念，他们的用途都是<strong>保存对象</strong>；</p>
+<h3 id="collection">Collection</h3>
+<p>Collection:是一个独立的元素序列，这些元素都服从一条或者多条规则。<br>
+·List必须按照插入的顺序保存元素<br>
+·Set不能用重复的元素<br>
+·Queue按照排队规则确定对象产生的顺序</p>
+<h3 id="map">Map</h3>
+<p>Map:一组成对的&quot;键值对&quot;对象，允许使用键来找查值。</p>
+<h1 id="迭代器">迭代器</h1>
+<p>在我们使用容器时会发现一个问题：如果我们原本对着List编码，但是后来发现如果能把相同的代码运用到Set上，将会大大方便编程，JAVA引入迭代器解决了这一问题。<br>
+迭代器（是一种设计模式）的作用是遍历并选择序列中的对象，程序员不用知道该序列的底层结构,java使Iterable接口实现迭代器。<br>
+Iterable<!-- raw HTML omitted -->接口被Collection所继承。其中的iterator方法：Iterator &lt; T&gt;  iterator()返回类型为 T元素的迭代器。<br>
+Java的Iterator只能单向移动，在Iterator接口中<br>
+·next()方法获得序列中的下一个元素。<br>
+·hasNext()方法检查序列中是否还有元素。<br>
+·remove()方法将迭代器新近放回的元素删除。</p>
+<h1 id="list">List</h1>
+<p>List接口在Collection的基础上添加了大量的方法，使得可以在List的中间插入和移除元素。<br>
+List有2种常见类型：<br>
+<strong>ArrayList</strong>可调整大小的数组的实现List接口。 实现所有可选列表操作，并允许所有元素，包括null 。 除了实现List 接口之外，该类还提供了一些方法来操纵内部使用的存储列表的数组的大小。 （这个类是大致相当于Vector，不同之处在于它是不同步的）。<br>
+arrayList擅长于随机访问，当从ArrayList的中间位置插入或者删除元素时，需要对数组进行复制、移动、代价比较高。因此，它适合随机查找和遍历，不适合插入和删除。<br>
+<strong>LinkedList</strong>
+双链表实现了List和Deque接口。 实现所有可选列表操作，并允许所有元素（包括null ）。 LinkedList通过较低的代价在List中间进行插入和删除操作，体用了优化的顺序访问。但是随机访问方面比较慢，它的特性集较ArrayList更大。</p>
+<h2 id="listiterator">ListIterator</h2>
+<p>ListIterator是Iterator的子类型，他只能用于List类的访问。ListIterator能够双向访问，也可以从List中插入和删除元素。</p>
+<h1 id="set">Set</h1>
+<p>·set不保存重复的元素（包括null），Set最常见的操作是找查。<br>
+·Set具有与Collection一样的接口，因此没有任何额外的功能，不像前面两个不同的List。实际上Set就是Collection，只是行为不同(这是继承与多态思想的典型应用：表现不同的行为)。<br>
+Set的主要实现由3种
+<strong>HashSet</strong>实现Set接口，由哈希表（实际为HashMap实例）支持，使用散列函数储存数据具有良好的存取和查找性能。<br>
+<strong>LinkedHashSet</strong>也是使用了散列，同样就要良好的找查性能，使用了链表来维护元素插入的顺序。<br>
+<strong>TreeSet</strong> 将元素储存在红-黑树的数据结构中（除了TreeSet外的所有Set都具有和Collection完全一样的接口）。</p>
+<h1 id="map-1">Map</h1>
+<p>·Map与Collection唯一重叠就是Map可以使用entrySet()和Values()方法来产生Collection<br>
+<strong>Hash</strong>和HashSet集合不能保证元素的顺序一样，HashMap也不能保证key-value对的顺序。<br>
+<strong>LinkedHashMap</strong>也使用双向链表来维护key-value对的次序，该链表负责维护Map的迭代顺序<br>
+<strong>TreeMap</strong>是一个红黑树结构，每个键值对都作为红黑树的一个节点</p>
+<h1 id="queue">Queue</h1>
+<p>·Queue(队列)是一个典型的先进先出的容器，事物放进容器的顺序与取出的顺序是相同的。<br>
+·LinkedList实现了Queue接口，因此LinkedList可以用作Queue的一种实现。<br>
+·Queue接口中的方法都是独立的，在创建Queue功能实现时，不需要使用Collection方法。<br>
+<strong>PriorityQueue</strong>优先队列声明了下一个弹出的元素是最需要的元素（具有最高优先级）</p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://kongfutiger17.github.io/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
